@@ -4,19 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
+
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './store/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffect } from './store/user.effects';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeroesComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({users: reducer}),
+    FormsModule,
+    HttpClientModule,
+    EffectsModule.forRoot([UserEffect])
   ],
   providers: [],
   bootstrap: [AppComponent]

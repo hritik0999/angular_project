@@ -17,12 +17,8 @@ export class HeroesComponent implements OnInit {
   }
 
   heroes = HEROES ; 
-
-  onClick(hero : Hero)
-  {
-
+  
+  onClick(hero : Hero){
     this.hero = hero;
-
   }
-
 }

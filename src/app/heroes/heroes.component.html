@@ -1,22 +1,16 @@
-
-<ul class="myheroes" >
-
-    <li *ngFor = " let hero of heroes " (click) = " onClick(hero) ">
-
-        <span class="heroes" >{{ hero.id }}</span>{{ hero.name }}
-
+<ul class="myheroes">
+    <li *ngFor=" let hero of heroes " (click)=" onClick(hero) ">
+        <span class="heroes">{{ hero.id }}</span>{{ hero.name }}
     </li>
-
 </ul>
-<div *ngIf = "hero" >
-
-<h2>{{ hero.name | uppercase }} Details</h2>
-
-<div><span>id : </span>{{ hero.id }}</div>
-
-<div>
-    <label for="name">Hero name: </label>
-    <input id="name" [(ngModel)]="hero.name" placeholder="name">
+<div *ngIf="hero ;else nohero">
+    <h2>{{ hero.name | uppercase }} Details</h2>
+    <div><span>id : </span>{{ hero.id }}</div>
+    <div>
+        <label for="name">Hero name: </label>
+        <input id="name" [(ngModel)]="hero.name" placeholder="name">
+    </div>
 </div>
-
-</div>
+<ng-template #nohero>
+    <h2>No Hero Selected</h2>
+</ng-template>
